@@ -1,0 +1,6 @@
+version: '2'
+
+networks:
+  prodnetwork:
+    external:
+      name: zenrgie_services
