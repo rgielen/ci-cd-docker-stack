@@ -19,7 +19,7 @@ services:
  nexus:
   image: sonatype/nexus3
   ports:
-    - "18081:8081"
+    - "30081:8081"
   environment:
     - JAVA_MIN_MEM=256m
     - JAVA_MAX_MEM=1200m
@@ -31,7 +31,7 @@ services:
  jenkins:
   build: ./jenkins
   ports:
-    - "18080:8080"
+    - "30080:8080"
   networks:
     - prodnetwork
   volumes:
@@ -53,7 +53,7 @@ services:
   networks:
     - prodnetwork
   ports:
-    - "17080:8080"
-    - "17222:17222"
+    - "30082:8080"
+    - "30022:30022"
   volumes:
     - ci-tool-stack_gitbucket:/gitbucket

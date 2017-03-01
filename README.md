@@ -49,13 +49,13 @@ All services are accessible by browser, whereby `DOCKER_HOST` refers to the IP o
 
 ### Jenkins
 
-Jenkins will be accessible at `http://DOCKER_HOST:18080`. 
+Jenkins will be accessible at `http://DOCKER_HOST:30080`. 
 Global Security is turned off, such that you are able to start right away.
 
 ### Nexus 
-Nexus will be accessible at `http://DOCKER_HOST:18081`.
+Nexus will be accessible at `http://DOCKER_HOST:30081`.
 Username is `admin`, password is `admin123`.
 
 ### Gitbucket
-Gitbucket will be accessible at `http://DOCKER_HOST:17080` and runs it's SSH server on `DOCKER_HOST:17222`.
+Gitbucket will be accessible at `http://DOCKER_HOST:30082` and runs it's SSH server on `DOCKER_HOST:17222`.
 Username is `root`, password is `root`.
