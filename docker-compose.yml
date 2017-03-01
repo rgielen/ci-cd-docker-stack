@@ -38,8 +38,8 @@ services:
     - /var/run/docker.sock:/var/run/docker.sock
     - ci-training_jenkins:/var/lib/jenkins/
   depends_on:
-    - nexus
-    - gitbucket
+    - ci-training_nexus
+    - ci-training_gitbucket
 #    - sonar
   environment:
     - NEXUS_PORT=8081
