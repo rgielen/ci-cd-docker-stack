@@ -5,18 +5,18 @@ networks:
     driver: bridge
 
 volumes:
-  ci-tool-stack_jenkins:
+  ci-training_jenkins:
     driver: local
-  ci-tool-stack_nexus:
+  ci-training_nexus:
     driver: local
-  ci-tool-stack_gitbucket:
+  ci-training_gitbucket:
     driver: local
 
 services:
 
 # https://github.com/sonatype/docker-nexus3
 # https://hub.docker.com/r/sonatype/nexus3/
- nexus:
+ ci-training_nexus:
   image: sonatype/nexus3
   ports:
     - "30081:8081"
@@ -24,11 +24,11 @@ services:
     - JAVA_MIN_MEM=256m
     - JAVA_MAX_MEM=1200m
   volumes:
-    - ci-tool-stack_nexus:/nexus-data
+    - ci-training_nexus:/nexus-data
   networks:
     - prodnetwork
 
- jenkins:
+ ci-training_jenkins:
   build: ./jenkins
   ports:
     - "30080:8080"
@@ -36,7 +36,7 @@ services:
     - prodnetwork
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock
-    - ci-tool-stack_jenkins:/var/lib/jenkins/
+    - ci-training_jenkins:/var/lib/jenkins/
   depends_on:
     - nexus
     - gitbucket
@@ -47,7 +47,7 @@ services:
 
 # https://github.com/f99aq8ove/docker-gitbucket
 # https://hub.docker.com/r/f99aq8ove/gitbucket/
- gitbucket:
+ ci-training_gitbucket:
   image: f99aq8ove/gitbucket:latest
   restart: always
   networks:
@@ -56,4 +56,4 @@ services:
     - "30082:8080"
     - "30022:30022"
   volumes:
-    - ci-tool-stack_gitbucket:/gitbucket
+    - ci-training_gitbucket:/gitbucket
