@@ -11,6 +11,10 @@ volumes:
     driver: local
   ci-training_gitbucket:
     driver: local
+  ci-training_svnhome:
+    driver: local
+  ci-training_svnconfig:
+    driver: local
 
 services:
 
@@ -57,3 +61,14 @@ services:
     - "30022:30022"
   volumes:
     - ci-training_gitbucket:/gitbucket
+
+ ci-training_svn:
+  build: ./subversion
+  restart: always
+  networks:
+    - prodnetwork
+  ports:
+    - "30083:80"
+  volumes:
+    - ci-training_svnhome:/var/lib/svn
+    - ci-training_svnconfig:/etc/apache2/dav_svn
