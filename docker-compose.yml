@@ -83,8 +83,8 @@ services:
   image: gitlab/gitlab-ce:latest
   restart: always
   ports:
-    - 30083:80
-    - 30033:22
+    - "30083:80"
+    - "30033:22"
   volumes:
     - ci-training_gitlab_config:/etc/gitlab
     - ci-training_gitlab_data:/var/log/gitlab
