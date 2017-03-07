@@ -9,7 +9,7 @@ ENV SVN_AUTHFILE=${SVN_CONFIG}/dav_svn.authz
 COPY sites-available/* /etc/apache2/sites-available/
 
 RUN apt-get update && apt-get -y install subversion libapache2-mod-svn subversion-tools nano \
-        && a2enmod dav_svn \
+        && a2enmod dav_svn headers \
         && a2ensite dav_svn \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/* \
