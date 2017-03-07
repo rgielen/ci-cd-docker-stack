@@ -82,6 +82,8 @@ services:
  ci-training_gitlab:
   image: gitlab/gitlab-ce:latest
   restart: always
+  networks:
+    - prodnetwork
   ports:
     - "30084:80"
     - "30222:22"
