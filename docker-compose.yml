@@ -15,6 +15,12 @@ volumes:
     driver: local
   ci-training_svnconfig:
     driver: local
+  ci-training_gitlab_config:
+    driver: local
+  ci-training_gitlab_data:
+    driver: local
+  ci-training_gitlab_log:
+    driver: local
 
 services:
 
@@ -72,3 +78,14 @@ services:
   volumes:
     - ci-training_svnhome:/var/lib/svn
     - ci-training_svnconfig:/etc/apache2/dav_svn
+
+ ci-training_gitlab:
+  image: gitlab/gitlab-ce:latest
+  restart: always
+  ports:
+    - 30083:80
+    - 30033:22
+  volumes:
+    - ci-training_gitlab_config:/etc/gitlab
+    - ci-training_gitlab_data:/var/log/gitlab
+    - ci-training_gitlab_log:/var/opt/gitlab
