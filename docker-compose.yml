@@ -79,6 +79,8 @@ services:
     - ci-training_svnhome:/var/lib/svn
     - ci-training_svnconfig:/etc/apache2/dav_svn
 
+# Standard Gitlab image, config now yet static
+# HTTPS config (also for proxy mode): https://docs.gitlab.com/omnibus/settings/nginx.html#enable-https
  ci-training_gitlab:
   image: gitlab/gitlab-ce:latest
   restart: always
