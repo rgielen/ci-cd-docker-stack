@@ -86,6 +86,9 @@ services:
   restart: always
   networks:
     - prodnetwork
+  environment:
+    GITLAB_OMNIBUS_CONFIG: |
+      gitlab_rails['gitlab_shell_ssh_port'] = 30222
   ports:
     - "30084:80"
     - "30222:22"
