@@ -7,6 +7,8 @@ networks:
 volumes:
   ci-training_jenkins:
     driver: local
+  ci-training_maven:
+    driver: local
   ci-training_nexus:
     driver: local
   ci-training_gitbucket:
