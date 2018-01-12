@@ -45,7 +45,7 @@ services:
     - ci-training_jenkins:/var/lib/jenkins/
   depends_on:
     - ci-training_nexus
-    - ci-training_gitbucket
+    - ci-training_gitlab
   environment:
     - NEXUS_PORT=8081
 
