@@ -11,12 +11,6 @@ volumes:
     driver: local
   ci-training_nexus:
     driver: local
-  ci-training_gitbucket:
-    driver: local
-  ci-training_svnhome:
-    driver: local
-  ci-training_svnconfig:
-    driver: local
   ci-training_gitlab_config:
     driver: local
   ci-training_gitlab_data:
@@ -52,36 +46,11 @@ services:
   depends_on:
     - ci-training_nexus
     - ci-training_gitbucket
-#    - sonar
   environment:
     - NEXUS_PORT=8081
 
 
-# https://github.com/f99aq8ove/docker-gitbucket
-# https://hub.docker.com/r/f99aq8ove/gitbucket/
- ci-training_gitbucket:
-  image: f99aq8ove/gitbucket:latest
-  restart: always
-  networks:
-    - prodnetwork
-  ports:
-    - "30082:8080"
-    - "30022:30022"
-  volumes:
-    - ci-training_gitbucket:/gitbucket
-
- ci-training_svn:
-  build: ./subversion
-  restart: always
-  networks:
-    - prodnetwork
-  ports:
-    - "30083:80"
-  volumes:
-    - ci-training_svnhome:/var/lib/svn
-    - ci-training_svnconfig:/etc/apache2/dav_svn
-
-# Standard Gitlab image, config now yet static
+# Standard Gitlab
 # HTTPS config (also for proxy mode): https://docs.gitlab.com/omnibus/settings/nginx.html#enable-https
  ci-training_gitlab:
   image: gitlab/gitlab-ce:latest
