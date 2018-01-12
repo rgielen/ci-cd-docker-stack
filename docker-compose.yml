@@ -53,7 +53,7 @@ services:
 # Standard Gitlab
 # HTTPS config (also for proxy mode): https://docs.gitlab.com/omnibus/settings/nginx.html#enable-https
  ci-training_gitlab:
-  image: gitlab/gitlab-ce:latest
+  image: gitlab/gitlab-ce:10.3.3-ce.0
   restart: always
   networks:
     - prodnetwork
