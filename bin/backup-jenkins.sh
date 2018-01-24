@@ -14,9 +14,9 @@ mkdir -p $JENKINS_BACKUP_DIR
 
 
 echo +++ Perfoming Jenkins backup +++
-echo Backing up $JENKINS_CONTAINER_NAME ...
-docker exec -i $JENKINS_CONTAINER_NAME tar --exclude $JENKINS_HOME/plugins --exclude $JENKINS_HOME/.m2 -cOvj $JENKINS_HOME > "$BACKUP_DIR/$JENKINS_CONTAINER_NAME.tar.bz2"
-cp $BACKUP_DIR/$JENKINS_CONTAINER_NAME.tar.bz2 $JENKINS_BACKUP_DIR/$NOW.tar.bz2
+echo Backing up $JENKINS_CONTAINER_ID ...
+docker exec -i $JENKINS_CONTAINER_ID tar --exclude $JENKINS_HOME/plugins --exclude $JENKINS_HOME/.m2 -cOvj $JENKINS_HOME > "$JENKINS_BACKUP_DIR/$NOW.tar.bz2"
+ln -s $JENKINS_BACKUP_DIR/$NOW.tar.bz2 $BACKUP_DIR/$JENKINS_CONTAINER_ID.tar.bz2
 echo +++ Jenkins backups done+++
 echo
 

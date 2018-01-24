@@ -7,9 +7,12 @@ cd $BIN_DIR/..
 CONFIG_DIR=$(pwd)
 CONFIG_NAME=$(basename $CONFIG_DIR)
 
-NEXUS_CONTAINER_NAME=$(docker-compose ps -q ci-training_nexus)
-GITLAB_CONTAINER_NAME=$(docker-compose ps -q ci-training_gitlab)
-JENKINS_CONTAINER_NAME=$(docker-compose ps -q ci-training_jenkins)
+NEXUS_CONTAINER_NAME=ci-training_nexus
+NEXUS_CONTAINER_ID=$(docker-compose ps -q $NEXUS_CONTAINER_NAME)
+GITLAB_CONTAINER_NAME=ci-training_gitlab
+GITLAB_CONTAINER_ID=$(docker-compose ps -q $GITLAB_CONTAINER_NAME)
+JENKINS_CONTAINER_NAME=ci-training_jenkins
+JENKINS_CONTAINER_ID=$(docker-compose ps -q $JENKINS_CONTAINER_NAME)
 
 JENKINS_HOME=/var/jenkins_home
 
@@ -23,3 +26,4 @@ chmod g+s $BACKUP_DIR
 
 NEXUS_BACKUP_DIR=$BACKUP_DIR/$NEXUS_CONTAINER_NAME
 JENKINS_BACKUP_DIR=$BACKUP_DIR/$JENKINS_CONTAINER_NAME
+GITLAB_BACKUP_DIR=$BACKUP_DIR/$GITLAB_CONTAINER_NAME
