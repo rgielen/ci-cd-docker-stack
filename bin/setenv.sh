@@ -11,7 +11,7 @@ NEXUS_CONTAINER_NAME=$(docker-compose ps -q ci-training_nexus)
 GITLAB_CONTAINER_NAME=$(docker-compose ps -q ci-training_gitlab)
 JENKINS_CONTAINER_NAME=$(docker-compose ps -q ci-training_jenkins)
 
-JENKINS_HOME=/var/jenkins_home/
+JENKINS_HOME=/var/jenkins_home
 
 cd ${ORIGINAL_WD}
 
