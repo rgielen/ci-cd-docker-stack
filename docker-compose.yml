@@ -5,10 +5,10 @@ networks:
     driver: bridge
 
 volumes:
-  ci-training_jenkins:
-    driver: local
-  ci-training_maven:
-    driver: local
+#  ci-training_jenkins:
+#    driver: local
+#  ci-training_maven:
+#    driver: local
 #  ci-training_nexus:
 #    driver: local
 #  ci-training_gitbucket:
@@ -40,21 +40,21 @@ services:
 #  networks:
 #    - prodnetwork
 
- ci-training_jenkins:
-  build: ./jenkins
-  ports:
-    - "30080:8080"
-  networks:
-    - prodnetwork
-  volumes:
-    - /var/run/docker.sock:/var/run/docker.sock
-    - ci-training_jenkins:/var/lib/jenkins/
-#  depends_on:
-#    - ci-training_nexus
-#    - ci-training_gitbucket
-#    - sonar
-  environment:
-    - NEXUS_PORT=8081
+# ci-training_jenkins:
+#  build: ./jenkins
+#  ports:
+#    - "30080:8080"
+#  networks:
+#    - prodnetwork
+#  volumes:
+#    - /var/run/docker.sock:/var/run/docker.sock
+#    - ci-training_jenkins:/var/lib/jenkins/
+##  depends_on:
+##    - ci-training_nexus
+##    - ci-training_gitbucket
+##    - sonar
+#  environment:
+#    - NEXUS_PORT=8081
 
 
 # https://github.com/f99aq8ove/docker-gitbucket
