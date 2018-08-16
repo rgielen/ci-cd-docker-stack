@@ -11,8 +11,8 @@ volumes:
     driver: local
   ci-training_nexus:
     driver: local
-  ci-training_gitbucket:
-    driver: local
+#  ci-training_gitbucket:
+#    driver: local
   ci-training_svnhome:
     driver: local
   ci-training_svnconfig:
@@ -59,16 +59,16 @@ services:
 
 # https://github.com/f99aq8ove/docker-gitbucket
 # https://hub.docker.com/r/f99aq8ove/gitbucket/
- ci-training_gitbucket:
-  image: f99aq8ove/gitbucket:latest
-  restart: always
-  networks:
-    - prodnetwork
-  ports:
-    - "30082:8080"
-    - "30022:30022"
-  volumes:
-    - ci-training_gitbucket:/gitbucket
+# ci-training_gitbucket:
+#  image: f99aq8ove/gitbucket:latest
+#  restart: always
+#  networks:
+#    - prodnetwork
+#  ports:
+#    - "30082:8080"
+#    - "30022:30022"
+#  volumes:
+#    - ci-training_gitbucket:/gitbucket
 
  ci-training_svn:
   build: ./subversion
