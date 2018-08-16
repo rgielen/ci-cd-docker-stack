@@ -71,15 +71,17 @@ services:
     - ci-training_gitbucket:/gitbucket
 
  ci-training_svn:
-  build: ./subversion
-  restart: always
-  networks:
-    - prodnetwork
-  ports:
-    - "30083:80"
-  volumes:
-    - ci-training_svnhome:/var/lib/svn
-    - ci-training_svnconfig:/etc/apache2/dav_svn
+   image: rgielen/subversion-server-simple:18.04
+   restart: always
+   networks:
+   - prodnetwork
+   ports:
+   - "30083:80"
+   environment:
+   - HTTPD_ENV_AUTHNAME=Subversion authentication
+   volumes:
+   - ci-training_svnhome:/var/lib/svn
+   - ci-training_svnconfig:/etc/apache2/dav_svn
 
 # Standard Gitlab image, config now yet static
 # HTTPS config (also for proxy mode): https://docs.gitlab.com/omnibus/settings/nginx.html#enable-https
