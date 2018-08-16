@@ -78,7 +78,7 @@ services:
   ports:
     - "30083:80"
   environment:
-    - HTTPD_ENV_AUTHNAME=training.rgielen.net\ Subversion\ authentication
+    - HTTPD_ENV_AUTHNAME=training.rgielen.net Subversion authentication
   volumes:
     - ci-training_svnhome:/var/lib/svn
     - ci-training_svnconfig:/etc/apache2/dav_svn
