@@ -71,12 +71,14 @@ services:
 #    - ci-training_gitbucket:/gitbucket
 
  ci-training_svn:
-  build: ./subversion
+  image: rgielen/subversion-server-simple:18.04
   restart: always
   networks:
     - prodnetwork
   ports:
     - "30083:80"
+  environment:
+    - HTTPD_ENV_AUTHNAME=training.rgielen.net\ Subversion\ authentication
   volumes:
     - ci-training_svnhome:/var/lib/svn
     - ci-training_svnconfig:/etc/apache2/dav_svn
