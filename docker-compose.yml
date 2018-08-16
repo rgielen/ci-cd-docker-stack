@@ -98,5 +98,5 @@ services:
     - "30222:22"
   volumes:
     - ci-training_gitlab_config:/etc/gitlab
-    - ci-training_gitlab_data:/var/log/gitlab
-    - ci-training_gitlab_log:/var/opt/gitlab
+    - ci-training_gitlab_data:/var/opt/gitlab
+    - ci-training_gitlab_log:/var/log/gitlab
