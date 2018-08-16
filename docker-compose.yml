@@ -17,12 +17,12 @@ volumes:
     driver: local
   ci-training_svnconfig:
     driver: local
-  ci-training_gitlab_config:
-    driver: local
-  ci-training_gitlab_data:
-    driver: local
-  ci-training_gitlab_log:
-    driver: local
+#  ci-training_gitlab_config:
+#    driver: local
+#  ci-training_gitlab_data:
+#    driver: local
+#  ci-training_gitlab_log:
+#    driver: local
 
 services:
 
@@ -83,18 +83,18 @@ services:
 
 # Standard Gitlab image, config now yet static
 # HTTPS config (also for proxy mode): https://docs.gitlab.com/omnibus/settings/nginx.html#enable-https
- ci-training_gitlab:
-  image: gitlab/gitlab-ce:latest
-  restart: always
-  networks:
-    - prodnetwork
-  environment:
-    GITLAB_OMNIBUS_CONFIG: |
-      gitlab_rails['gitlab_shell_ssh_port'] = 30222
-  ports:
-    - "30084:80"
-    - "30222:22"
-  volumes:
-    - ci-training_gitlab_config:/etc/gitlab
-    - ci-training_gitlab_data:/var/log/gitlab
-    - ci-training_gitlab_log:/var/opt/gitlab
+# ci-training_gitlab:
+#  image: gitlab/gitlab-ce:latest
+#  restart: always
+#  networks:
+#    - prodnetwork
+#  environment:
+#    GITLAB_OMNIBUS_CONFIG: |
+#      gitlab_rails['gitlab_shell_ssh_port'] = 30222
+#  ports:
+#    - "30084:80"
+#    - "30222:22"
+#  volumes:
+#    - ci-training_gitlab_config:/etc/gitlab
+#    - ci-training_gitlab_data:/var/log/gitlab
+#    - ci-training_gitlab_log:/var/opt/gitlab
