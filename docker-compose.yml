@@ -9,8 +9,8 @@ volumes:
     driver: local
   ci-training_maven:
     driver: local
-  ci-training_nexus:
-    driver: local
+#  ci-training_nexus:
+#    driver: local
 #  ci-training_gitbucket:
 #    driver: local
   ci-training_svnhome:
@@ -28,17 +28,17 @@ services:
 
 # https://github.com/sonatype/docker-nexus3
 # https://hub.docker.com/r/sonatype/nexus3/
- ci-training_nexus:
-  image: sonatype/nexus3
-  ports:
-    - "30081:8081"
-  environment:
-    - JAVA_MIN_MEM=256m
-    - JAVA_MAX_MEM=1200m
-  volumes:
-    - ci-training_nexus:/nexus-data
-  networks:
-    - prodnetwork
+# ci-training_nexus:
+#  image: sonatype/nexus3
+#  ports:
+#    - "30081:8081"
+#  environment:
+#    - JAVA_MIN_MEM=256m
+#    - JAVA_MAX_MEM=1200m
+#  volumes:
+#    - ci-training_nexus:/nexus-data
+#  networks:
+#    - prodnetwork
 
  ci-training_jenkins:
   build: ./jenkins
@@ -50,7 +50,7 @@ services:
     - /var/run/docker.sock:/var/run/docker.sock
     - ci-training_jenkins:/var/lib/jenkins/
   depends_on:
-    - ci-training_nexus
+#    - ci-training_nexus
 #    - ci-training_gitbucket
 #    - sonar
   environment:
